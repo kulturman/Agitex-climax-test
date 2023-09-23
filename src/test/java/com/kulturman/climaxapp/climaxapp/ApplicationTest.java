@@ -42,7 +42,7 @@ class ApplicationTest implements FileParser {
     }
 
     @Test
-    void getClientsList() {
+    void getClientsList() throws FileParserException {
         List<Client> clients = applicationService.getClientsList(file);
 
         assertEquals(3, clients.size());
@@ -50,7 +50,7 @@ class ApplicationTest implements FileParser {
     }
 
     @Test
-    void calculateMeanByProfession() {
+    void calculateMeanByProfession() throws FileParserException {
         var result = applicationService.getMeanByProfession(applicationService.getClientsList(file));
         assertEquals(result.get(0), new GroupResult("shinobi", 200000));
         assertEquals(result.get(1), new GroupResult("informaticien", 40000));

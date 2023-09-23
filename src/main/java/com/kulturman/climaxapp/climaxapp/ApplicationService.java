@@ -12,7 +12,7 @@ public class ApplicationService {
         this.fileParserResolver = fileParserResolver;
     }
 
-    public List<Client> getClientsList(File file) {
+    public List<Client> getClientsList(File file) throws FileParserException {
         var parser = fileParserResolver.resolve(file);
         return parser.getFileContent(file);
     }
