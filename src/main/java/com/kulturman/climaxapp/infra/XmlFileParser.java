@@ -1,5 +1,8 @@
-package com.kulturman.climaxapp.climaxapp;
+package com.kulturman.climaxapp.infra;
 
+import com.kulturman.climaxapp.domain.Client;
+import com.kulturman.climaxapp.domain.FileParser;
+import com.kulturman.climaxapp.domain.FileParserException;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;

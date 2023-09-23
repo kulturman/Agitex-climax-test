@@ -1,4 +1,4 @@
-package com.kulturman.climaxapp.climaxapp;
+package com.kulturman.climaxapp.domain;
 
 import java.io.File;
 import java.util.List;

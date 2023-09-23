@@ -1,5 +1,6 @@
-package com.kulturman.climaxapp.climaxapp;
+package com.kulturman.climaxapp;
 
+import com.kulturman.climaxapp.domain.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

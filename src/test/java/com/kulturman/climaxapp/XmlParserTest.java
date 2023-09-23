@@ -1,12 +1,16 @@
-package com.kulturman.climaxapp.climaxapp;
+package com.kulturman.climaxapp;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.kulturman.climaxapp.domain.Client;
+import com.kulturman.climaxapp.domain.FileParserException;
+import com.kulturman.climaxapp.infra.XmlFileParser;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ResourceLoader;
 
 import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 class XmlParserTest {
