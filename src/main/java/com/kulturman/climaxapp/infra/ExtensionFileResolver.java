@@ -10,11 +10,10 @@ public class ExtensionFileResolver implements FileParserResolverInterface {
     public FileParser resolve(File file) {
         var extension = file.getName().substring(file.getName().lastIndexOf(".") + 1);
 
-        switch (extension) {
-            case "xml":
-                return new XmlFileParser();
-            default:
-                throw new RuntimeException("No file parser for " + file.getName());
-        }
+        return switch (extension) {
+            case "xml" -> new XmlFileParser();
+            case "yaml", "yml" -> new YamlFileParser();
+            default -> throw new RuntimeException("No file parser for " + file.getName());
+        };
     }
 }

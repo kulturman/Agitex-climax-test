@@ -5,7 +5,7 @@ Il y a deux formats pris en charge actuellement (XML et YAML), ces fichiers peuv
 
 ### Tester
 
-GET **http://localhost:8000/xml** ou GET **http://localhost:8000/yml** pour tester la lecture des fichiers xml et yml.
+GET **http://localhost:8000/xml** ou GET **http://localhost:8000/yaml** pour tester la lecture des fichiers xml et yml.
 
 
 ### Comment rajouter un nouveau format?
