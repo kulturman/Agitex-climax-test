@@ -1,21 +1,20 @@
 package com.kulturman.climaxapp.climaxapp;
 
-import java.util.ArrayList;
+import java.io.File;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.*;
 
 public class ApplicationService {
-    private FileParserResolverInterface fileParserResolver;
+    private final FileParserResolverInterface fileParserResolver;
 
     public ApplicationService(FileParserResolverInterface fileParserResolver) {
         this.fileParserResolver = fileParserResolver;
     }
 
-    public List<Client> getClientsList(String filePath) {
-        var parser = fileParserResolver.resolve(filePath);
-        return parser.getFileContent(filePath);
+    public List<Client> getClientsList(File file) {
+        var parser = fileParserResolver.resolve(file);
+        return parser.getFileContent(file);
     }
 
     public List<GroupResult> getMeanByProfession(List<Client> clientsList) {
