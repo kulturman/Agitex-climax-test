@@ -27,7 +27,7 @@ public class YamlFileParser implements FileParser {
             )).collect(Collectors.toList());
 
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new FileParserException(e.getMessage());
         }
     }
 }
