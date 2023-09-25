@@ -38,12 +38,12 @@ class ApplicationTest implements FileParser {
 
     @BeforeEach
     void beforeEach() {
-        when(fileParserResolver.resolve(file)).thenReturn(this);
         applicationService = new ApplicationService(fileParserResolver);
     }
 
     @Test
     void getClientsList() throws FileParserException {
+        when(fileParserResolver.resolve(file)).thenReturn(this);
         List<Client> clients = applicationService.getClientsList(file);
 
         assertEquals(3, clients.size());
@@ -52,7 +52,7 @@ class ApplicationTest implements FileParser {
 
     @Test
     void calculateMeanByProfession() throws FileParserException {
-        var result = applicationService.getMeanByProfession(applicationService.getClientsList(file));
+        var result = applicationService.getMeanByProfession(clientsList);
         assertEquals(result.get(0), new GroupResult("shinobi", 200000));
         assertEquals(result.get(1), new GroupResult("informaticien", 40000));
     }
