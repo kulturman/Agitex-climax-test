@@ -1,6 +1,5 @@
 package com.kulturman.climaxapp;
 
-import com.kulturman.climaxapp.domain.FileParserException;
 import com.kulturman.climaxapp.domain.FileParserResolverInterface;
 import com.kulturman.climaxapp.infra.ExtensionFileResolver;
 import org.springframework.boot.SpringApplication;

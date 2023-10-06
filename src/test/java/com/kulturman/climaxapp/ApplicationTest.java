@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
-class ApplicationTest implements FileParser {
+class ApplicationTest {
     @Mock
     private FileParserResolverInterface fileParserResolver;
 
@@ -24,6 +24,9 @@ class ApplicationTest implements FileParser {
     private static File file;
 
     private ApplicationService applicationService;
+
+    @Mock
+    private FileParser fileParser;
 
     @BeforeAll
     public static void beforeAll() {
@@ -43,11 +46,21 @@ class ApplicationTest implements FileParser {
 
     @Test
     void getClientsList() throws FileParserException {
-        when(fileParserResolver.resolve(file)).thenReturn(this);
+        when(fileParserResolver.resolve(file)).thenReturn(fileParser);
+        whenFileParserIsCalledReturnClientsList();
+
         List<Client> clients = applicationService.getClientsList(file);
 
         assertEquals(3, clients.size());
         assertClientsListMatches(clientsList, clients);
+    }
+
+    private void whenFileParserIsCalledReturnClientsList() throws FileParserException {
+        when(fileParser.getFileContent(file)).thenReturn(Arrays.asList(
+            new Client("UCHIHA", "Itachi", 30, "shinobi", 200000),
+            new Client("ZOUS", "Adrien", 30, "informaticien", 35000),
+            new Client("BAKYONO", "Arnaud", 30, "informaticien", 45000)
+        ));
     }
 
     @Test
@@ -63,14 +76,4 @@ class ApplicationTest implements FileParser {
         }
     }
 
-
-    //Self shunt test, so I don't need to mock or create a concrete implem of FileParser
-    @Override
-    public List<Client> getFileContent(File file) {
-        return Arrays.asList(
-            new Client("UCHIHA", "Itachi", 30, "shinobi", 200000),
-            new Client("ZOUS", "Adrien", 30, "informaticien", 35000),
-            new Client("BAKYONO", "Arnaud", 30, "informaticien", 45000)
-        );
-    }
 }
